@@ -29,6 +29,12 @@ export const BrokerContent: FC<BrokerContentProps> = ({
 
   const onSaveHandler = async () => {
     try {
+
+      if(balance < 0 || !balance){
+        await axios.patch(`${API_URL}/broker/update/${id}`, {})
+        return
+      }
+
       const updatedBroker = {
         name,
         balance

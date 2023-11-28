@@ -3,9 +3,11 @@ import styles from './TradingControllerComponent.module.css'
 import { controllerSocket } from '../../../gateway.ts'
 import { Box, Button, InputLabel, TextField } from '@mui/material'
 
-interface TradingControllerComponentProps {}
+interface TradingControllerComponentProps {
+  tradingList: any[]
+}
 
-const TradingControllerComponent: FC<TradingControllerComponentProps> = () => {
+const TradingControllerComponent: FC<TradingControllerComponentProps> = ({ tradingList }) => {
   const [delayError, setDelayError] = useState(false)
   const [dateError, setDateError] = useState(false)
   const setDate = (dateElement: any | null) => {
@@ -23,7 +25,7 @@ const TradingControllerComponent: FC<TradingControllerComponentProps> = () => {
   }
 
   const onStartClock = async () => {
-    controllerSocket.emit('startClock')
+    controllerSocket.emit('startClock', JSON.stringify(tradingList))
   }
 
   const onStopClock = async () => {

@@ -20,7 +20,6 @@ const TradingStocksComponent: FC<TradingStocksComponentProps> = ({ tradingList }
 
   useEffect(() => {
     const handleStockData = (data: StockData[]) => {
-      console.log(tradingList)
       data = data.filter((elem: StockData) => tradingList.includes(elem.ticker))
       setStocks(data);
     };

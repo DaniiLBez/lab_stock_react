@@ -13,7 +13,7 @@ const TradingPageComponent: FC<TradingPageComponentProps> = () => {
   return (
     <div className={styles.TradingPageComponent}>
       <NavigationComponent />
-      <TradingControllerComponent />
+      <TradingControllerComponent tradingList={listTradings}/>
       <TradingStocksComponent tradingList={listTradings} />
     </div>
   )
